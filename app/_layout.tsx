@@ -1,11 +1,40 @@
 import { View, Text } from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { GlobalProvider } from '@/context/GlobalProvider';
+import * as SplashScreen from "expo-splash-screen";
+import { Stack } from 'expo-router';
+
+SplashScreen.preventAutoHideAsync();
+
+SplashScreen.setOptions({
+  duration: 1000,
+  fade: true
+});
 
 const RootLayout = () => {
+  useEffect(() => {
+    SplashScreen.hideAsync();
+  }, []);
+
   return (
-    <View>
-      <Text>RootLayout</Text>
-    </View>
+    <GlobalProvider>
+      <Stack>
+        <Stack.Screen
+          name="index"
+          options={{
+            headerShown: false,
+            title: 'Home',
+          }}
+        />
+        <Stack.Screen
+          name="(auth)"
+          options={{
+            headerShown: false,
+            title: 'Auth',
+          }}
+        />
+      </Stack>
+    </GlobalProvider>
   );
 };
 
