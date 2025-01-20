@@ -9,7 +9,7 @@ const LoginPage = () => {
       className='bg-secondary flex-1 justify-start items-center gap-10'
     >
       <View
-        className='bg-primary w-full h-1/2 rounded-b-[53px] -mt-5'
+        className='bg-primary w-full h-1/2 rounded-b-[53px] -mt-5 flex justify-center items-center gap-5'
         style={Platform.select({
           ios: {
             shadowColor: 'black',
@@ -24,7 +24,14 @@ const LoginPage = () => {
             elevation: 15,
           }
         })}
-      ></View>
+      >
+        <Text>
+          ICH
+        </Text>
+        <Text>
+          ISI Code Hub
+        </Text>
+      </View>
       <Text>LoginPage</Text>
       <Link href={"/"}>
         <Text style={{
