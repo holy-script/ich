@@ -6,6 +6,9 @@ import { Stack } from 'expo-router';
 import '../global.css';
 import { StatusBar } from 'expo-status-bar';
 import * as NavigationBar from 'expo-navigation-bar';
+import { useFonts } from 'expo-font';
+import { Iceberg_400Regular } from '@expo-google-fonts/iceberg';
+import { Karla_300Light, Karla_500Medium } from '@expo-google-fonts/karla';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -19,9 +22,39 @@ NavigationBar.setVisibilityAsync('hidden');
 NavigationBar.setBehaviorAsync('overlay-swipe');
 
 const RootLayout = () => {
+  const [fontsLoaded, error] = useFonts({
+    Iceberg_400Regular,
+    Karla_300Light,
+    Karla_500Medium,
+  });
+
   useEffect(() => {
     SplashScreen.hideAsync();
   }, []);
+
+  if (!fontsLoaded) {
+    return (
+      <View style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+        <Text>Loading...</Text>
+      </View>
+    );
+  }
+
+  if (error) {
+    return (
+      <View style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+        <Text>Error: {error.message}</Text>
+      </View>
+    );
+  }
 
   return (
     <GlobalProvider>
