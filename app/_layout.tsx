@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { GlobalProvider } from '@/context/GlobalProvider';
 import * as SplashScreen from "expo-splash-screen";
 import { Stack } from 'expo-router';
+import '../global.css';
 
 SplashScreen.preventAutoHideAsync();
 

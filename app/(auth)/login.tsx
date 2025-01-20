@@ -1,15 +1,30 @@
-import { View, Text } from 'react-native';
+import { View, Text, Platform } from 'react-native';
 import React from 'react';
 import { Link } from 'expo-router';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const LoginPage = () => {
   return (
-    <View style={{
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      gap: 10,
-    }}>
+    <SafeAreaView
+      className='bg-secondary flex-1 justify-start items-center gap-10'
+    >
+      <View
+        className='bg-primary w-full h-1/2 rounded-b-[53px] -mt-5'
+        style={Platform.select({
+          ios: {
+            shadowColor: 'black',
+            shadowOffset: {
+              width: 0,
+              height: 10,
+            },
+            shadowOpacity: 0.5,
+            shadowRadius: 10,
+          },
+          android: {
+            elevation: 15,
+          }
+        })}
+      ></View>
       <Text>LoginPage</Text>
       <Link href={"/"}>
         <Text style={{
@@ -18,7 +33,7 @@ const LoginPage = () => {
           Go to Home
         </Text>
       </Link>
-    </View>
+    </SafeAreaView>
   );
 };
 
